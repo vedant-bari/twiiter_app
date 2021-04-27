@@ -1,0 +1,64 @@
+<div class="login-wrapper" *ngIf="!loader">
+
+   
+    <form [formGroup]="registerForm" class="login">
+        <h2>Registration Form </h2>
+        <clr-input-container>
+            <input clrInput formControlName="first_name" type="text" id="first_name" placeholder="Enter First Name"  required>
+            <clr-control-error *clrIfError="'required'">First Name is required
+            </clr-control-error>    
+                
+        </clr-input-container>
+
+        <clr-input-container>
+            <input clrInput formControlName="last_name" type="text" id="last_name" placeholder="Enter Last Name"  required>
+            <clr-control-error  *clrIfError="'required'"> Last Name is required</clr-control-error>    
+        </clr-input-container>
+
+        <clr-input-container>
+            <input clrInput formControlName="email" type="text" id="email" placeholder="Enter Your Email"  required>
+            <clr-control-error  *clrIfError="'required'"> Email is required</clr-control-error>  
+            <clr-control-error  *clrIfError="'errors'"> Email is incorrect</clr-control-error>    
+        </clr-input-container>
+        
+        <clr-input-container>
+            <input clrInput formControlName="password1" type="password" id="password1" placeholder="Enter your password"  required>
+            <clr-control-error  *clrIfError="'required'"> Password is required</clr-control-error> 
+            <clr-control-error  *clrIfError="'minLength'"> Password should be of minLength 6</clr-control-error>      
+        </clr-input-container>
+
+        <clr-input-container>
+            <input clrInput formControlName="password2" type="password" id="password2" placeholder="Confirm your password"  required>
+            <clr-control-error  *clrIfError="'required'"> Password is required</clr-control-error> 
+            <clr-control-error  *clrIfError="'minLength'"> Password should be of minLength 6</clr-control-error>      
+        </clr-input-container>
+        
+
+        <div class="alert alert-danger" role="alert" *ngIf="errorFlag">
+            <div class="alert-items">
+                <div class="alert-item static">
+                    <div class="alert-icon-wrapper">
+                        <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+                    </div>
+                    <span class="alert-text">
+                    {{ errorMessage }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <button class="btn btn-primary" type="submit" (click)="onSubmit()">Submit</button>
+        </div>
+
+    </form>
+
+     
+
+</div>
+<span class="spinner spinner-md" *ngIf="loader">
+    Loading...
+</span>
+
+
+

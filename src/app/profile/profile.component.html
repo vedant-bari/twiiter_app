@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="main-body">
+    
+          <!-- Breadcrumb -->
+         
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{ profileData.first_name}}  {{ profileData.last_name}} </h4>
+                      <p class="text-secondary mb-1">{{ profileData.email }}</p>
+                      <!-- <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p> -->
+                      <button class="btn btn-primary" (click)="onSubmit()" *ngIf="!editMode">Edit</button>
+                      <button class="btn btn-outline-primary" (click)="logOut()" >Logout</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="col-md-8" *ngIf="editMode">
+              <form [formGroup]="profileForm" class="login">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">First Name</h6>
+                    </div>
+                    <clr-input-container>
+                      <input clrInput formControlName="first_name" type="text" id="first_name" [(ngModel)]="profileData.first_name">
+                    </clr-input-container>
+
+                  </div>
+                  <!-- <hr> -->
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Last Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <!-- <clr-input-container> -->
+                      <input clrInput formControlName="last_name" type="text" id="last_name" [(ngModel)]="profileData.last_name">
+                    <!-- </clr-input-container> -->
+                    </div>
+                  </div>
+                  <!-- <hr> -->
+                  <!-- <hr> -->
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      <!-- <clr-input-container> -->
+                      <input clrInput formControlName="email" type="text" id="email" [(ngModel)]="profileData.email" disabled=true>
+                    <!-- </clr-input-container> -->
+                    </div>
+                  </div>
+                  <!-- <hr> -->
+                  <!-- <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      (239) 816-9029
+                    </div>
+                  </div> -->
+                  <!-- <hr> -->
+                  <!-- <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Mobile</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      (320) 380-4539
+                    </div>
+                  </div> -->
+                  <!-- <hr> -->
+                  <!-- <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Address</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Bay Area, San Francisco, CA
+                    </div>
+                  </div> -->
+
+                <button class="btn btn-primary" (click)="onUpdate(profileForm)" *ngIf="editMode">Update</button>    
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
