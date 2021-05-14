@@ -40,22 +40,7 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
 
-  otpVerify(){
-    if(this.verification_code){
-      console.log("verification_code",this.verification_code)
-      // api code
-      this.loginService.userVerifyCode(this.verification_code).subscribe( response =>{
-      localStorage.setItem('user', JSON.stringify(response));
-      this.otpsend = false;
-      this.router.navigate(['/profile'])
-      },
-      error =>{
-        console.log(error);
-      }
-      );
-      
-    }
-  }
+  
 
   onSubmit() {
     this.submitted = true;
@@ -71,11 +56,12 @@ export class LoginComponent implements OnInit {
     this.loginService.userLogin(this.loginForm.value).subscribe(response =>{
       console.log(response)
       localStorage.setItem('token', response["token"]);
-      // localStorage.setItem('user', JSON.stringify(response["user"]));
-      this.loader = true;
-      this.otpsend = true;
-
-      // this.router.navigate(['/profile'])
+      localStorage.setItem('user', JSON.stringify(response["user"]));
+      this.router.navigate(['/profile'])
+      this.loader = false;
+      
+      
+      
     },
     error =>{
       this.errorFlag = true;

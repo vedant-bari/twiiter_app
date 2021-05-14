@@ -52,17 +52,3 @@
 
 
 
-<clr-modal [(clrModalOpen)]="otpsend">
-    <h3 class="modal-title">OTP VERIFICATION</h3>
-    <div class="modal-body">Enter the otp send on your mail.
-        <input clrInput type="text" placeholder="Enter otp" name="verification_code" [(ngModel)]="verification_code" />
-        <button class="btn btn-primary" (click)="otpVerify()">Submit</button>
-    </div>
-    <!-- <div class="modal-body">
-        
-    </div> -->
-</clr-modal>
-
-<!-- <span class="spinner spinner-md" *ngIf="loader">
-    Loading...
-</span> -->
